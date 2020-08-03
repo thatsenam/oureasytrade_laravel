@@ -93,7 +93,7 @@
                     <a href="https://github.com/laravel/laravel">GitHub</a>
                 </div>
                 <div class="title ">
-                    Our Easy Trade
+                    Our Easy Trade By Enam
                 </div>
             </div>
 
