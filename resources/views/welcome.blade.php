@@ -64,7 +64,7 @@
         </style>
     </head>
     <body>
-        <div class="flex-center position-ref full-height">
+        <div class="flex-center position-ref">
             @if (Route::has('login'))
                 <div class="top-right links">
                     @auth
@@ -80,9 +80,7 @@
             @endif
 
             <div class="content">
-                <div class="title m-b-md">
-                    Laravel
-                </div>
+
 
                 <div class="links">
                     <a href="https://laravel.com/docs">Docs</a>
@@ -94,7 +92,12 @@
                     <a href="https://vapor.laravel.com">Vapor</a>
                     <a href="https://github.com/laravel/laravel">GitHub</a>
                 </div>
+                <div class="title ">
+                    Our Easy Trade
+                </div>
             </div>
+
+
         </div>
     </body>
 </html>
