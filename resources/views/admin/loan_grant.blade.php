@@ -13,10 +13,8 @@
 @section('content')
     <!-- component -->
 
-    <div id="alert" class="font-bold bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded relative" role="alert">
 
-    </div>
-    <form action="/admin/handle-member-form" enctype="multipart/form-data" method="POST">
+    <form action="/admin/loan-grant" enctype="multipart/form-data" method="POST">
         @csrf
         <div class="bg-gray-100 shadow rounded-lg p-6">
             <h2 class="h4 pb-4 ml-2 font-bold">Member Details</h2>
@@ -63,7 +61,7 @@
                         </p>
                     </div>
                     <p>
-                        <input id="name" name="name" autocomplete="false" tabindex="0" type="text"
+                        <input id="name" name="witness_1_name" autocomplete="false" tabindex="0" type="text"
                             class="py-1 px-1 text-gray-900 outline-none block h-full w-full" required
                             placeholder="Witness #1 Name">
                     </p>
@@ -76,7 +74,7 @@
                         </p>
                     </div>
                     <p>
-                        <input id="address" name="address" autocomplete="false" tabindex="0" type="text"
+                        <input id="address" name="witness_1_address" autocomplete="false" tabindex="0" type="text"
                             class="py-1 px-1 outline-none block h-full w-full" required placeholder="Witness #1 Address">
                     </p>
                 </div>
@@ -89,7 +87,7 @@
                         </p>
                     </div>
                     <p>
-                        <input id="mobile" name="mobile" type="number" autocomplete="false" tabindex="0" type="text"
+                        <input id="witness_1_mobile" name="witness_1_mobile" type="number" autocomplete="false" tabindex="0" type="text"
                             class="py-1 px-1 outline-none block h-full w-full" required
                             placeholder="Witness #1 Mohile Number">
                     </p>
@@ -104,10 +102,10 @@
                         </p>
                     </div>
                     <p class="flex content-between py-2">
-                        <input id="profile_picture" name="profile_picture" autocomplete="false" tabindex="0" type="file"
+                        <input id="witness_1_profile_picture" name="witness_1_profile_picture" autocomplete="false" tabindex="0" type="file"
                             class="py-1 px-1 outline-none  flex-1" required placeholder="Witness #1 Picture">
                         <span class="flex-2 p-1">
-                            <img id="profile_preview" class="rounded-lg" src="" alt="" height="80" width="80" />
+                            <img id="witness_1_profile_preview" class="rounded-lg" src="" alt="" height="80" width="80" />
                         </span>
 
 
@@ -129,7 +127,7 @@
                         </p>
                     </div>
                     <p>
-                        <input id="name" name="name" autocomplete="false" tabindex="0" type="text"
+                        <input id="name" name="witness_2_name" autocomplete="false" tabindex="0" type="text"
                             class="py-1 px-1 text-gray-900 outline-none block h-full w-full" required
                             placeholder="Witness #2 Name">
                     </p>
@@ -142,7 +140,7 @@
                         </p>
                     </div>
                     <p>
-                        <input id="address" name="address" autocomplete="false" tabindex="0" type="text"
+                        <input id="address" name="witness_2_address" autocomplete="false" tabindex="0" type="text"
                             class="py-1 px-1 outline-none block h-full w-full" required placeholder="Witness #2 Address">
                     </p>
                 </div>
@@ -155,7 +153,7 @@
                         </p>
                     </div>
                     <p>
-                        <input id="mobile" name="mobile" type="number" autocomplete="false" tabindex="0" type="text"
+                        <input  name="witness_2_mobile" type="number" autocomplete="false" tabindex="0" type="text"
                             class="py-1 px-1 outline-none block h-full w-full" required
                             placeholder="Witness #2 Mohile Number">
                     </p>
@@ -170,10 +168,10 @@
                         </p>
                     </div>
                     <p class="flex content-between py-2">
-                        <input id="profile_picture" name="profile_picture" autocomplete="false" tabindex="0" type="file"
+                        <input id="witness_2_profile_picture" name="witness_2_profile_picture" autocomplete="false" tabindex="0" type="file"
                             class="py-1 px-1 outline-none  flex-1" required placeholder="Witness #2 Picture">
                         <span class="flex-2 p-1">
-                            <img id="profile_preview" class="rounded-lg" src="" alt="" height="80" width="80" />
+                            <img id="witness_2_profile_preview" class="rounded-lg" src="" alt="" height="80" width="80" />
                         </span>
 
 
@@ -195,27 +193,109 @@
                     class="border focus-within:border-blue-500 focus-within:text-blue-500 transition-all duration-500 relative rounded p-1">
                     <div class="-mt-4 absolute tracking-wider px-1 uppercase text-xs">
                         <p>
-                            <label for="nominee_name" class="bg-white text-gray-700 font-bold px-1">Nominee Name *</label>
+                            <label for="nominee_name" class="bg-white text-gray-700 font-bold px-1">Loan Amount *</label>
                         </p>
                     </div>
 
 
                     <p>
-                        <input id="nominee_name" name="nominee_name" autocomplete="false" tabindex="0" type="text"
-                            class="py-1 px-1 outline-none block h-full w-full" required>
+                        <input id="nominee_name" name="loan_amount" autocomplete="false" tabindex="0" type="number"
+                            class="py-1 px-1 outline-none block h-full w-full" required placeholder="Enter Loan Amount">
+                    </p>
+                </div>
+
+
+                <div
+                    class="border focus-within:border-blue-500 focus-within:text-blue-500 transition-all duration-500 relative rounded p-1">
+                    <div class="-mt-4 absolute tracking-wider px-1 uppercase text-xs">
+                        <p>
+                            <label for="nominee_name" class="bg-white text-gray-700 font-bold px-1">Interest Rate *</label>
+                        </p>
+                    </div>
+
+
+                    <p>
+                        <input id="nominee_name" name="interest_rate" autocomplete="false" tabindex="0" type="number"
+                            class="py-1 px-1 outline-none block h-full w-full" required placeholder="Interest Rate">
+                    </p>
+                </div>
+
+                <div
+                    class="border focus-within:border-blue-500 focus-within:text-blue-500 transition-all duration-500 relative rounded p-1">
+                    <div class="-mt-4 absolute tracking-wider px-1 uppercase text-xs">
+                        <p>
+                            <label for="nominee_name" class="bg-white text-gray-700 font-bold px-1">Interest Amount
+                                *</label>
+                        </p>
+                    </div>
+
+
+                    <p>
+                        <input id="nominee_name" name="interest_amount" autocomplete="false" tabindex="0" type="number"
+                            class="py-1 px-1 outline-none block h-full w-full" required placeholder="Interest Amount">
+                    </p>
+                </div>
+
+
+                <div
+                    class="border focus-within:border-blue-500 focus-within:text-blue-500 transition-all duration-500 relative rounded p-1">
+                    <div class="-mt-4 absolute tracking-wider px-1 uppercase text-xs">
+                        <p>
+                            <label for="nominee_name" class="bg-white text-gray-700 font-bold px-1">Installment *</label>
+                        </p>
+                    </div>
+
+
+                    <p>
+                        <input id="nominee_name" name="installment" autocomplete="false" tabindex="0" type="number"
+                            class="py-1 px-1 outline-none block h-full w-full" required
+                            placeholder="Enter Installment In Days">
+                    </p>
+                </div>
+
+
+                <div
+                    class="border focus-within:border-blue-500 focus-within:text-blue-500 transition-all duration-500 relative rounded p-1">
+                    <div class="-mt-4 absolute tracking-wider px-1 uppercase text-xs">
+                        <p>
+                            <label for="nominee_name" class="bg-white text-gray-700 font-bold px-1">Installment TK *</label>
+                        </p>
+                    </div>
+
+
+                    <p>
+                        <input id="nominee_name" name="installment_tk" autocomplete="false" tabindex="0" type="number"
+                            class="py-1 px-1 outline-none block h-full w-full" required placeholder="Enter Installment TK">
+                    </p>
+                </div>
+
+
+                <div
+                    class="border focus-within:border-blue-500 focus-within:text-blue-500 transition-all duration-500 relative rounded p-1">
+                    <div class="-mt-4 absolute tracking-wider px-1 uppercase text-xs">
+                        <p>
+                            <label for="nominee_name" class="bg-white text-gray-700 font-bold px-1">Service Charge *</label>
+                        </p>
+                    </div>
+
+
+                    <p>
+                        <input id="nominee_name" name="service_charge" autocomplete="false" tabindex="0" type="number"
+                            class="py-1 px-1 outline-none block h-full w-full" required placeholder="Enter Service Charge">
                     </p>
                 </div>
                 <div
                     class="border focus-within:border-blue-500 focus-within:text-blue-500 transition-all duration-500 relative rounded p-1">
                     <div class="-mt-4 absolute tracking-wider px-1 uppercase text-xs">
                         <p>
-                            <label for="nominee_address" class="bg-white text-gray-700 font-bold px-1">Nominee Address
-                                *</label>
+                            <label for="nominee_name" class="bg-white text-gray-700 font-bold px-1">Time Session *</label>
                         </p>
                     </div>
+
+
                     <p>
-                        <input id="nominee_address" name="nominee_address" autocomplete="false" tabindex="0" type="text"
-                            class="py-1 px-1 outline-none block h-full w-full" required>
+                        <input id="nominee_name" name="time_session" autocomplete="false" tabindex="0" type="number"
+                            class="py-1 px-1 outline-none block h-full w-full" required placeholder="Enter Time Session">
                     </p>
                 </div>
 
@@ -223,16 +303,50 @@
                     class="border focus-within:border-blue-500 focus-within:text-blue-500 transition-all duration-500 relative rounded p-1">
                     <div class="-mt-4 absolute tracking-wider px-1 uppercase text-xs">
                         <p>
-                            <label for="nominee_mobile" class="bg-white text-gray-700 font-bold px-1">Nominee Mobile
-                                *</label>
+                            <label for="nominee_name" class="bg-white text-gray-700 font-bold px-1">Time Session *</label>
+                        </p>
+                    </div>
+
+
+                    <p>
+                        <input id="nominee_name" name="time_session" autocomplete="false" tabindex="0" type="number"
+                            class="py-1 px-1 outline-none block h-full w-full" required placeholder="Enter Time Session">
+                    </p>
+                </div>
+
+                <div
+                    class="border focus-within:border-blue-500 focus-within:text-blue-500 transition-all duration-500 relative rounded p-1">
+                    <div class="-mt-4 absolute tracking-wider px-1 uppercase text-xs">
+                        <p>
+                            <label for="date" class="bg-white text-gray-700 font-bold px-1">Date *</label>
                         </p>
                     </div>
                     <p>
-                        <input id="nominee_mobile" name="nominee_mobile" autocomplete="false" tabindex="0" type="text"
-                            class="py-1 px-1 outline-none block h-full w-full" required>
+                        <input id="date" type="date" name="date" autocomplete="false" tabindex="0" type="text"
+                            class="py-1 px-1 outline-none block h-full w-full">
                     </p>
                 </div>
+
+                <div
+                    class="border focus-within:border-blue-500 focus-within:text-blue-500 transition-all duration-500 relative rounded p-1">
+                    <div class="-mt-4 absolute tracking-wider px-1 uppercase text-xs">
+                        <p>
+                            <label for="nominee_name" class="bg-white text-gray-700 font-bold px-1">Total Amount *</label>
+                        </p>
+                    </div>
+
+
+                    <p>
+                        <input id="nominee_name" name="total_amount" autocomplete="false" tabindex="0" type="number"
+                            class="py-1 px-1 outline-none block h-full w-full" required placeholder="Enter Total Amount">
+                    </p>
+                </div>
+
+
+
             </div>
+
+        </div>
 
 
 

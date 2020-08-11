@@ -31,7 +31,13 @@ Route::get('/admin/withdraw-fund','Admin\AdminController@withdraw_fund');
 Route::post('/admin/withdraw-fund','Admin\AdminController@withdraw_fund_form');
 
 Route::get('/admin/loan-grant','Admin\AdminController@loan_grant');
-Route::post('/admin/loan-grant','Admin\AdminController@loan_grant');
+Route::post('/admin/loan-grant','Admin\AdminController@loan_grant_form');
+
+Route::get('/admin/loan-collection','Admin\AdminController@loan_collection');
+Route::post('/admin/loan-collection','Admin\AdminController@loan_collection_form');
+
+Route::post('/admin/q/loans','Admin\MemberController@getLoans')->name('members.getLoans');
+
 
 
 
@@ -45,5 +51,5 @@ Route::group(['prefix' => 'admin'], function () {
 });
 
 Route::get('/test', function (Request $request) {
-return Withdraw::all()->first();    
+return Withdraw::all()->first();
 });

@@ -10,4 +10,8 @@ class Loan extends Model
     {
         return $this->belongsTo('App\Member');
     }
+    public function loan_collections()
+    {
+        return $this->hasMany('App\LoanCollection');
+    }
 }

@@ -9,9 +9,7 @@
 @section('content')
     <!-- component -->
 
-    <div id="alert"  class="font-bold bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded relative" role="alert" >
 
-    </div>
     <form action="/admin/handle-member-form" enctype="multipart/form-data" method="POST">
         @csrf
         <div class="bg-gray-100 shadow rounded-lg p-6">
@@ -71,14 +69,15 @@
                     class="border focus-within:border-blue-500 focus-within:text-blue-500 transition-all duration-500 relative rounded p-1">
                     <div class="-mt-4 absolute tracking-wider px-1 uppercase text-xs">
                         <p>
-                            <label for="profile_picture" class="bg-white text-gray-700 font-bold px-1">Profile Picture * <span class="font-normal">(Should not be greater than 500kb)</span></label>
+                            <label for="profile_picture" class="bg-white text-gray-700 font-bold px-1">Profile Picture *
+                                <span class="font-normal">(Should not be greater than 500kb)</span></label>
                         </p>
                     </div>
                     <p class="flex content-between py-2">
-                        <input  id="profile_picture" name="profile_picture"  autocomplete="false" tabindex="0" type="file"
+                        <input id="profile_picture" name="profile_picture" autocomplete="false" tabindex="0" type="file"
                             class="py-1 px-1 outline-none  flex-1" required>
                         <span class="flex-2 p-1">
-                                <img id="profile_preview" class="rounded-lg" src="" alt="" height="80" width="80" />
+                            <img id="profile_preview" class="rounded-lg" src="" alt="" height="80" width="80" />
                         </span>
 
 
@@ -90,13 +89,15 @@
                     class="border focus-within:border-blue-500 focus-within:text-blue-500 transition-all duration-500 relative rounded p-1 h-50">
                     <div class="tracking-wider px-1 uppercase text-xs block bg-white">
 
-                            <label class="bg-white text-gray-700 font-bold px-1">Status *</label> <br>
+                        <label class="bg-white text-gray-700 font-bold px-1">Status *</label> <br>
 
 
-                        <input class="bg-white text-gray-700 font-bold px-1" type="radio" id="active" name="status" value="Active" checked>
-                            <label for="active">Active</label><br>
-                            <input class="bg-white text-gray-700 font-bold px-1" type="radio" id="inactive" name="status" value="InActive">
-                            <label for="inactive">InActive</label><br>
+                        <input class="bg-white text-gray-700 font-bold px-1" type="radio" id="active" name="status"
+                            value="Active" checked>
+                        <label for="active">Active</label><br>
+                        <input class="bg-white text-gray-700 font-bold px-1" type="radio" id="inactive" name="status"
+                            value="InActive">
+                        <label for="inactive">InActive</label><br>
 
                     </div>
 
@@ -118,17 +119,17 @@
                     </p>
                 </div>
                 <div
-                class="border focus-within:border-blue-500 focus-within:text-blue-500 transition-all duration-500 relative rounded p-1">
-                <div class="-mt-4 absolute tracking-wider px-1 uppercase text-xs">
+                    class="border focus-within:border-blue-500 focus-within:text-blue-500 transition-all duration-500 relative rounded p-1">
+                    <div class="-mt-4 absolute tracking-wider px-1 uppercase text-xs">
+                        <p>
+                            <label for="date" class="bg-white text-gray-700 font-bold px-1">Date *</label>
+                        </p>
+                    </div>
                     <p>
-                        <label for="date" class="bg-white text-gray-700 font-bold px-1">Date *</label>
+                        <input id="date" type="date" name="date" autocomplete="false" tabindex="0" type="text"
+                            class="py-1 px-1 outline-none block h-full w-full">
                     </p>
                 </div>
-                <p>
-                    <input id="date" type="date" name="date" autocomplete="false" tabindex="0" type="text"
-                        class="py-1 px-1 outline-none block h-full w-full">
-                </p>
-            </div>
 
             </div>
 
@@ -157,7 +158,8 @@
                     class="border focus-within:border-blue-500 focus-within:text-blue-500 transition-all duration-500 relative rounded p-1">
                     <div class="-mt-4 absolute tracking-wider px-1 uppercase text-xs">
                         <p>
-                            <label for="nominee_address" class="bg-white text-gray-700 font-bold px-1">Nominee Address *</label>
+                            <label for="nominee_address" class="bg-white text-gray-700 font-bold px-1">Nominee Address
+                                *</label>
                         </p>
                     </div>
                     <p>
@@ -170,7 +172,8 @@
                     class="border focus-within:border-blue-500 focus-within:text-blue-500 transition-all duration-500 relative rounded p-1">
                     <div class="-mt-4 absolute tracking-wider px-1 uppercase text-xs">
                         <p>
-                            <label for="nominee_mobile"  class="bg-white text-gray-700 font-bold px-1">Nominee Mobile *</label>
+                            <label for="nominee_mobile" class="bg-white text-gray-700 font-bold px-1">Nominee Mobile
+                                *</label>
                         </p>
                     </div>
                     <p>
@@ -188,7 +191,10 @@
         <div class="border-t mt-6 pt-3">
             <button id="submit" type="submit"
                 class="float-right font-bold rounded px-10 py-2 text-gray-100 px-3 py-1 bg-blue-500 hover:shadow-inner hover:bg-blue-700 transition-all duration-300">
-                Register <svg class="h-6 w-6 text-white inline" fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24" stroke="currentColor"><path d="M14 5l7 7m0 0l-7 7m7-7H3"></path></svg>
+                Register <svg class="h-6 w-6 text-white inline" fill="none" stroke-linecap="round" stroke-linejoin="round"
+                    stroke-width="2" viewBox="0 0 24 24" stroke="currentColor">
+                    <path d="M14 5l7 7m0 0l-7 7m7-7H3"></path>
+                </svg>
             </button>
 
         </div>

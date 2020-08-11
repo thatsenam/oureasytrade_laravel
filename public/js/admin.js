@@ -17,20 +17,20 @@ Date.prototype.toDateInputValue = (function() {
   $("#profile_picture").change(function() {
 
     // readURL(this);
-    ValidateFileUpload();
+    ValidateFileUpload("#profile_picture","#profile_preview");
   });
 
-  $('#date').val(new Date().toDateInputValue());
+  $('#date').val(new Date(Date.now()).toDateInputValue());
 
-  function ValidateFileUpload() {
+  function ValidateFileUpload(file_id,preview_id) {
 
-    var fuData = document.getElementById('profile_picture');
+    var fuData = document.getElementById(file_id.replace('#',''));
     var FileUploadPath = fuData.value;
     var MAX_SIZE = 500000;
 
     if (FileUploadPath == '') {
         alert("Please upload an image");
-        $("#profile_picture").val('')
+        $(file_id).val('')
 
     } else {
         var Extension = FileUploadPath.substring(FileUploadPath.lastIndexOf('.') + 1).toLowerCase();
@@ -47,15 +47,15 @@ Date.prototype.toDateInputValue = (function() {
 
                     if(size > MAX_SIZE){
                         alert("Maximum file size exceeds");
-                        $("#profile_picture").val('')
-                        $('#profile_preview').attr('src','')
+                        $(file_id).val('')
+                        $(preview_id).attr('src','')
 
                         return;
                     }else{
                         var reader = new FileReader();
 
                         reader.onload = function(e) {
-                            $('#profile_preview').attr('src', e.target.result);
+                            $(preview_id).attr('src', e.target.result);
                         }
 
                         reader.readAsDataURL(fuData.files[0]);
@@ -67,8 +67,8 @@ Date.prototype.toDateInputValue = (function() {
 
     else {
             alert("Photo only allows file types of GIF, PNG, JPG, JPEG and BMP. ");
-            $("#profile_picture").val('')
-            $('#profile_preview').attr('src','')
+            $(file_id).val('')
+            $(preview_id).attr('src','')
         }
     }}
 
@@ -101,7 +101,6 @@ var CSRF_TOKEN = $('meta[name="csrf-token"]').attr('content');
 console.log('executed')
 $("#search").select2({
     placeholder: "Name or Phone",
-    allowClear: true,
       ajax: {
         url: "/admin/q/members",
         type: "post",
@@ -114,7 +113,7 @@ $("#search").select2({
           };
         },
         processResults: function (response) {
-            console.log(response)
+            // console.log(response)
           return {
             results: response
           };
@@ -125,9 +124,19 @@ $("#search").select2({
       }
     });
 
-$('#search').on('select2:select', function (e) {
+
+    var myfield =  $("#loan").select2({
+        placeholder: "Select Loan",
+        minimumResultsForSearch: -1,
+        "language": {
+            "noResults": function(){
+                return "Please select the name field first";
+            }
+        },
+        });
+    $('#search').on('select2:select', function (e) {
         var data = e.params.data;
-        console.log(data);
+        // console.log(data);
         $('#member_id').val(data.id);
         $('#member_id_hidden').val(data.id);
         $('#name').val(data.name);
@@ -135,6 +144,75 @@ $('#search').on('select2:select', function (e) {
         $('#previous_deposit_hidden').val(data.previous_deposit);
         $('#previous_withdraw').val(data.previous_withdraw);
         $('#previous_withdraw_hidden').val(data.previous_withdraw);
+        myfield.empty().trigger("change");
+        $.ajax({
+            type: 'POST',
+            url: '/admin/q/loans',
+            data:  {
+                  _token: CSRF_TOKEN,
+                  search: data.id // search term
+                }
+              ,
+        }).then(function (response) {
+            // create the option and append to Select2
+            // console.log('bal',data);
+            console.log('calling http')
+
+            response.forEach(function(data){
+                var option = new Option(`${data.name} ${data.total_amount}TK - ${data.date.replace('00:00:00','')}`, data.id, false, false);
+                    option.enamsdata = data
+                myfield.append(option).trigger('change');
+
+                // manually trigger the `select2:select` event
+
+                console.log('in loop')
+            })
+            myfield.trigger({
+                type: 'select2:select'
+            });
+
+        });
+
       });
 
 
+        // var option = new Option('test', 1, true, true);
+        // myfield.append(option).trigger('change');
+
+      function cleanloans(){
+        $('#loan_amount').val('')
+        $('#paid').val('')
+        $('#due').val('')
+        $('#installment').val('')
+        $('#savings').val('')
+        $('#total_amount').val('')
+        $('#loan_id').val('')
+
+
+
+      }
+
+    $('#loan').on('select2:select', function (e) {
+        cleanloans()
+        var data = e.target[e.target.selectedIndex].enamsdata;
+        console.log(data);
+        $('#loan_amount').val(data.loan_amount)
+        $('#loan_id').val(data.id)
+        $('#paid').val(data.paid)
+        $('#due').val(data.due)
+        $('#installment').val(data.installment)
+        $('#savings').val(data.savings)
+        $('#total_amount').val(data.total_amount)
+      });
+
+$("#witness_2_profile_picture").change(function() {
+        // readURL(this);
+        console.log('wops')
+        ValidateFileUpload("#witness_2_profile_picture","#witness_2_profile_preview");
+      });
+$("#witness_1_profile_picture").change(function() {
+        // readURL(this);
+        console.log('wops')
+
+        ValidateFileUpload("#witness_1_profile_picture","#witness_1_profile_preview");
+      });

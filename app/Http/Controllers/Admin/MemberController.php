@@ -5,6 +5,8 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Member;
+use App\Loan;
+
 
 class MemberController extends Controller
 {
@@ -34,4 +36,21 @@ class MemberController extends Controller
         return json_encode($response);
 
      }
-}
+
+     public function getLoans(Request $request){
+
+        $search = $request->search;
+
+
+        $Loans = Loan::where('member_id',$search)->get();
+        
+
+
+        return $Loans;
+
+     }
+
+
+
+
+    }

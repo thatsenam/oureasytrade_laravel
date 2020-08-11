@@ -14,4 +14,9 @@ class Member extends Model
     {
         return $this->hasMany('App\Withdraw');
     }
+    public function loans()
+    {
+        return $this->hasMany('App\Loan');
+    }
+  
 }
